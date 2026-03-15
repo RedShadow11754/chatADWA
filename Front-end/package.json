@@ -1,0 +1,23 @@
+{
+	"name": "front-end",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^7.0.0",
+		"@sveltejs/kit": "^2.50.2",
+		"@sveltejs/vite-plugin-svelte": "^6.2.4",
+		"@tailwindcss/postcss": "^4.2.1",
+		"autoprefixer": "^10.4.27",
+		"postcss": "^8.5.8",
+		"svelte": "^5.51.0",
+		"tailwindcss": "^4.2.1",
+		"vite": "^7.3.1"
+	}
+}
