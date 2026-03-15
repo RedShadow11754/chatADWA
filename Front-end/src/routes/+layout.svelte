@@ -4,10 +4,6 @@
 	let { children } = $props();
 </script>
 
-<!-- npm install marked -->
-
-
-
 
 
 <svelte:head>
