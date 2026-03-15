@@ -1,0 +1,27 @@
+# Frontend
+Front-end/node_modules/
+Front-end/.svelte-kit/
+Front-end/build/
+Front-end/.output/
+
+# Backend
+Back-end/node_modules/
+Back-end/build/
+Back-end/dist/
+
+# OS / Editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Env files
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
