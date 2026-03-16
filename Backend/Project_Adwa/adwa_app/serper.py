@@ -27,8 +27,3 @@ class Serper:
         self.results = [item["snippet"] for item in self.info["organic"]]
     def serper_result(self):
         return self.results, self.source
-
-s = Serper("who won the battle of adwa")
-p,q = s.serper_result()
-print(p)
-print(f"\n\n\n{q}")
