@@ -1,8 +1,11 @@
 #!/bin/bash
 set -e
 
+# Make sure pip is updated (optional)
+pip install --upgrade pip
+
 # Install dependencies
-pip install -r requirements.txt
+pip install -r Backend/requirements.txt
 
 # Apply migrations
 python Backend/Project_Adwa/manage.py migrate
