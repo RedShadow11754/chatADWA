@@ -45,8 +45,9 @@ MIDDLEWARE = [
 ]
 
 # URL / WSGI
-ROOT_URLCONF = "project_adwa.urls"
-WSGI_APPLICATION = "project_adwa.wsgi.application"
+ROOT_URLCONF = "Project_Adwa.urls"
+WSGI_APPLICATION = "Project_Adwa.wsgi.application"
+
 
 # Database: dummy SQLite fallback (not used if you rely on Chroma)
 DATABASES = {
