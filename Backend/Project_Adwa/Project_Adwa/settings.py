@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv()               # safe: reads .env locally; Render will use env vars
+load_dotenv()  # safe: reads .env locally; Render will use env vars
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -15,7 +15,7 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",") if os.getenv("ALLOWED_
 
 # Timezone / i18n
 LANGUAGE_CODE = "en-us"
-TIME_ZONE = os.getenv("TIME_ZONE", "Africa/Addis_Ababa")   # change if you prefer UTC
+TIME_ZONE = os.getenv("TIME_ZONE", "Africa/Addis_Ababa")
 USE_I18N = True
 USE_TZ = True
 
@@ -31,9 +31,9 @@ INSTALLED_APPS = [
     "adwa_app",
 ]
 
-# Middleware: cors should be high; whitenoise after SecurityMiddleware
+# Middleware
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",                # keep early
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -44,33 +44,26 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-# URL / WSGI - ensure these names match your project folder/module
-ROOT_URLCONF = "project_adwa.urls"        # <-- ensure this matches your folder (project_adwa or Project_Adwa)
+# URL / WSGI
+ROOT_URLCONF = "project_adwa.urls"
 WSGI_APPLICATION = "project_adwa.wsgi.application"
 
-# Database: prefer DATABASE_URL in production; fallback to sqlite for local dev
-import dj_database_url   # add to requirements if you use it
-DATABASE_URL = os.getenv("DATABASE_URL")
-if DATABASE_URL:
-    DATABASES = {
-        "default": dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+# Database: dummy SQLite fallback (not used if you rely on Chroma)
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
-    }
+}
 
-# Static files (for collectstatic on Render)
+# Static files
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_DIRS = [BASE_DIR / "static"]   # optional: if you keep a top-level static folder
+STATICFILES_DIRS = [BASE_DIR / "static"]  # optional
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# CORS (dev defaults)
+# CORS
 CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(",")
 
-# Other helpful defaults
+# Other defaults
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
