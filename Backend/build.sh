@@ -1,10 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -e
 
-# install deps
-pip install --upgrade pip
+# Install dependencies
 pip install -r requirements.txt
 
-# run migrations & collectstatic (uses env vars on Render)
-python manage.py migrate --noinput
-python manage.py collectstatic --noinput
+# Apply migrations (from backend/project_adwa)
+python project_adwa/manage.py migrate
+
+# Collect static files
+python project_adwa/manage.py collectstatic --noinput
